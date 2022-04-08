@@ -64,7 +64,6 @@ public class DispatcherServlet extends ViewBaseServlet {
             for (Method method : methods) {
                 if (operate.equals(method.getName())) {
                     //1.统一获取请求参数
-
                     //1-1.获取当前方法的参数，返回参数数组
                     Parameter[] parameters = method.getParameters();
                     //1-2.parameterValues 用来承载参数的值
@@ -82,16 +81,15 @@ public class DispatcherServlet extends ViewBaseServlet {
                         } else {
                             //从请求中获取参数值
                             String parameterValue = request.getParameter(parameterName);
+
                             String typeName = parameter.getType().getName();
-
                             Object parameterObj = parameterValue;
-
                             if (parameterObj != null) {
+                                // 其他参数还有其他的类型，比如Double，这里需要扩展
                                 if ("java.lang.Integer".equals(typeName)) {
                                     parameterObj = Integer.parseInt(parameterValue);
                                 }
                             }
-
                             parameterValues[i] = parameterObj;
                         }
                     }
