@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="pro23-qqzone1.0:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/pro23_qqzone1_0_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="pro23-qqzone1.0/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="pro23-qqzone1.0" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

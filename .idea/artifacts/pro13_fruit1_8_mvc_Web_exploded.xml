@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="pro13-fruit1.8-mvc:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/pro13_fruit1_8_mvc_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="pro13-fruit1.8-mvc/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="pro13-fruit1.8-mvc" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

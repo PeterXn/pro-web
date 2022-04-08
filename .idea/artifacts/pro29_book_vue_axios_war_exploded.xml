@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="pro29-book-vue-axios:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/pro29_book_vue_axios_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="pro29-book-vue-axios/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="pro29-book-vue-axios" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
