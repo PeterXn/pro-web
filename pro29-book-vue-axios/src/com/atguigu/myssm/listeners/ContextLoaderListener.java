@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebListener;
 /**
  * 监听上下文启动，在上下文启动的时候去创建IOC容器，然后将其保存到application作用域中，
  * 后面中央控制器再从application作用域中去获取IOC容器。
+ * @author Peter
  */
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
