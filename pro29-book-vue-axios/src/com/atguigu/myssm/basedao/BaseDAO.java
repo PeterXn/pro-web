@@ -144,13 +144,13 @@ public abstract class BaseDAO<T> {
                 T entity = (T) entityClass.newInstance();
 
                 for (int i = 0; i < columnCount; i++) {
-                    // fid属性名称
-                    /**
-                     * select fid as id
-                     * getColumnName()返回列名   fid
-                     * getColumnLabel()返回别名  id
-                     * String columnName = rsMetaData.getColumnName(i + 1);
-                     */
+                    //// fid属性名称
+                    ///**
+                    // * select fid as id
+                    // * getColumnName()   返回列名  fid
+                    // * getColumnLabel()  返回别名  id
+                    // * String columnName = rsMetaData.getColumnName(i + 1);
+                    // */
                     String columnName = rsMetaData.getColumnLabel(i + 1);
                     // fid的值
                     Object columnValue = rs.getObject(i + 1);
