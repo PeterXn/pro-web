@@ -115,10 +115,10 @@ public class DispatcherServlet extends ViewBaseServlet {
                     } else if (methodReturnStr.startsWith("json:")) {
                         //比如：  "json:{'uname':'1'}";
                         String jsonStr = methodReturnStr.substring("json:".length());
-                        /**
-                         *  解决中文乱码，后改在filter中解决
-                         *  response.setContentType("application/json;charset=utf-8");
-                         */
+                        ///**
+                        // *  解决中文乱码，后改在filter中解决
+                        // *  response.setContentType("application/json;charset=utf-8");
+                        // */
                         PrintWriter out = response.getWriter();
                         out.print(jsonStr);
                         out.flush();
