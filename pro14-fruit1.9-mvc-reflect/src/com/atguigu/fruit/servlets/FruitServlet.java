@@ -45,6 +45,7 @@ public class FruitServlet extends ViewBaseServlet {
         for (Method method : methods) {
             // 获取方法名
             String methodName = method.getName();
+            System.out.println("method = " + method);
             if (operate.equals(methodName)) {
                 try {
                     // 找到和operate同名的方法，再通过反射技术调用它

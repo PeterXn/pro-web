@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author Peter
+ */
 public class ViewBaseServlet extends HttpServlet {
 
     private TemplateEngine templateEngine;

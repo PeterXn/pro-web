@@ -187,6 +187,7 @@ public abstract class BaseDAO<T> {
                 if (isMyType(typeName)) {
                     // 假如是"com.atguigu.qqzoen.pojo.UserBasic"类型
                     Class typeNameClass = Class.forName(typeName);
+                    // 带一个Integer参数的构造函数
                     Constructor constructor = typeNameClass.getDeclaredConstructor(Integer.class);
                     propertyValue = constructor.newInstance(propertyValue);
                 }

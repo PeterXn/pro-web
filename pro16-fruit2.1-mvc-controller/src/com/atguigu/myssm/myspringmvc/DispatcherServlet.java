@@ -22,6 +22,9 @@ import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Peter
+ */
 @WebServlet("*.do")
 public class DispatcherServlet extends ViewBaseServlet {
 
@@ -34,6 +37,7 @@ public class DispatcherServlet extends ViewBaseServlet {
     public void init() throws ServletException {
         super.init();
         try {
+            // 读取配置文件
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream("applicationContext.xml");
             //1.创建DocumentBuilderFactory
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -78,6 +82,8 @@ public class DispatcherServlet extends ViewBaseServlet {
         // 第1步： /hello.do ->   hello   或者  /fruit.do  -> fruit
         // 第2步： hello -> HelloController 或者 fruit -> FruitController
         String servletPath = request.getServletPath();
+        System.out.println("servletPath = " + servletPath);
+        // 去掉 "/"
         servletPath = servletPath.substring(1);
         int lastDotIndex = servletPath.lastIndexOf(".do");
         servletPath = servletPath.substring(0, lastDotIndex);
@@ -94,7 +100,6 @@ public class DispatcherServlet extends ViewBaseServlet {
             for (Method method : methods) {
                 if (operate.equals(method.getName())) {
                     //1.统一获取请求参数
-
                     //1-1.获取当前方法的参数，返回参数数组
                     Parameter[] parameters = method.getParameters();
                     //1-2.parameterValues 用来承载参数的值
@@ -112,19 +117,20 @@ public class DispatcherServlet extends ViewBaseServlet {
                         } else {
                             //从请求中获取参数值
                             String parameterValue = request.getParameter(parameterName);
+
+                            // http://localhost:8085/pro16/fruit.do?pageNo=2, pageNo是"2"，而不是2。
                             String typeName = parameter.getType().getName();
-
                             Object parameterObj = parameterValue;
-
                             if (parameterObj != null) {
+                                // 如果其他Double参数，再扩展
                                 if ("java.lang.Integer".equals(typeName)) {
                                     parameterObj = Integer.parseInt(parameterValue);
                                 }
                             }
-
                             parameterValues[i] = parameterObj;
                         }
                     }
+
                     //2.controller组件中的方法调用
                     method.setAccessible(true);
                     Object returnObj = method.invoke(controllerBeanObj, parameterValues);
@@ -147,10 +153,9 @@ public class DispatcherServlet extends ViewBaseServlet {
                 throw new RuntimeException("operate值非法!");
             }
             */
-        } catch (IllegalAccessException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            throw new RuntimeException("operate值非法!" + e.getMessage());
         }
     }
 }

@@ -91,6 +91,7 @@ public class DispatcherServlet extends ViewBaseServlet {
                             Object parameterObj = parameterValue;
 
                             if (parameterObj != null) {
+                                // 如果参数类型是Double，得扩展
                                 if ("java.lang.Integer".equals(typeName)) {
                                     parameterObj = Integer.parseInt(parameterValue);
                                 }
